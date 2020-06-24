@@ -21,26 +21,29 @@ public class Livre extends Document{
 	public String getNomAuthor() {
 		return nomAuthor;
 	}
+	@Override
 	public void setNomAuthor(String nomAuthor) {
 		this.nomAuthor = nomAuthor;
 	}
 	public String getNomEdition() {
 		return nomEdition;
 	}
+	@Override
 	public void setNomEdition(String nomEdition) {
 		this.nomEdition = nomEdition;
 	}
 	public Date getDateEdition() {
 		return dateEdition;
 	}
-	public void setDateEdition(Date dateEdition) {
+	@Override
+	public void setDateDocument(Date dateEdition) {
 		this.dateEdition = dateEdition;
 	}
 	@Override
 	public void afficheDocument() {
 		SimpleDateFormat formater = new SimpleDateFormat("dd-MM-yy");
-		System.out.format("%15d|%10s|%3d|%32s|%10s|%10s|%9s|%16s|%16s\n",id_doc,type,nbre_exemp,titre,localisation.getSalle(),localisation.getRayon(),formater.format(dateEdition),nomAuthor,nomEdition);
-		System.out.format("%135s\n","---------------------------------------------------------------------------------------------------------------------------------");
+		System.out.format("%15d|%10s|%3d|%32s|%10s|%10s|%9s|%16s|%16s|%4s|\n",id_doc,type,nbre_exemp,titre,localisation.getSalle(),localisation.getRayon(),formater.format(dateEdition),nomAuthor,nomEdition,"None");
+		System.out.format("%135s\n","|--------|----------|---|--------------------------------|----------|----------|---------|----------------|----------------|----|");
 	}
 	
 	

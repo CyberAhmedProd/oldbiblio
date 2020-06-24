@@ -28,8 +28,8 @@ public class Magazine extends Document{
 	@Override
 	public void afficheDocument() {
 		SimpleDateFormat formater = new SimpleDateFormat("dd-MM-yy");
-		System.out.format("%15d|%10s|%3d|%32s|%10s|%10s|%9s|%16s|%16s|%4d\n",id_doc,type,nbre_exemp,titre,localisation.getSalle(),localisation.getRayon(),"None","None","None",frequence);
-		System.out.format("%135s\n","---------------------------------------------------------------------------------------------------------------------------------");
+		System.out.format("%15d|%10s|%3d|%32s|%10s|%10s|%9s|%16s|%16s|%4d|\n",id_doc,type,nbre_exemp,titre,localisation.getSalle(),localisation.getRayon(),"None","None","None",frequence);
+		System.out.format("%135s\n","|--------|----------|---|--------------------------------|----------|----------|---------|----------------|----------------|----|");
 	}
 	
 	

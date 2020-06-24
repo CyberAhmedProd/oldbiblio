@@ -1,4 +1,6 @@
 package document;
+import java.util.Date;
+
 import utility.Localistion;
 public class Document {
 	protected int id_doc=1;
@@ -53,6 +55,18 @@ public class Document {
 		return "["+type+"|id_doc=" + id_doc + "| titre=" + titre + "| salle=" + localisation.getSalle() +"| rayon=" + localisation.getRayon() +  "| nbre_exemp=" + nbre_exemp+"|";
 	}
 	public void afficheDocument() {
+		// TODO Auto-generated method stub
+		
+	}
+	public void setDateDocument(Date date) {
+		// TODO Auto-generated method stub
+		
+	}
+	public void setNomAuthor(String nextLine) {
+		// TODO Auto-generated method stub
+		
+	}
+	public void setNomEdition(String nextLine) {
 		// TODO Auto-generated method stub
 		
 	}

@@ -16,14 +16,13 @@ import utility.Localistion;
 
 public class Bibliotheque {
 	Scanner sc1;
+	Date aujourdhui= new Date();
 	public static void main(String[] args) {
-		// cr�er un objet de la classe ArrayList
+		// créer un objet de la classe ArrayList
 				// parti declaration 
 				Bibliotheque bib = new Bibliotheque();
-				
 				LinkedList<Adherent> Tab = new LinkedList<>();
 				LinkedList<Document> Tab1 = new LinkedList<>();
-				
 				// parti initalisation
 				bib.initTabAherent(Tab);
 				bib.initTabDocument(Tab1);
@@ -39,7 +38,7 @@ public class Bibliotheque {
 		
 		System.out.println("*************************************BIENVENUE*************************************\n\n");
 		Date aujourdhui= new Date();
-		System.out.println("La date actuelle est : "+aujourdhui);
+		System.out.println("La date actuelle est : "+this.aujourdhui);
 		
 		Scanner sc1 = new Scanner(System.in);
 		int choix=1;
@@ -83,6 +82,8 @@ public class Bibliotheque {
 		}
 	// *****************************************************************************************************************CyberAhmedProd*******
 	// methode utilitaire *  * * * * -* *- ** -* -* -** -* -** -* -*--------------***************************************************
+   
+	
 	public void pushAdherent(LinkedList<Adherent>TabAdh,Adherent A)
 	{
 		
@@ -104,6 +105,10 @@ public class Bibliotheque {
 			n=sc1.nextInt();
 		}while (n<=0);
 		return n;
+	}
+	
+	private boolean verifDateAfter(Date d1) {
+		return d1.after(aujourdhui)?true:false;
 	}
 	
 	public void pushDocument(LinkedList<Document>TabAdh,Document D)
@@ -197,10 +202,10 @@ public class Bibliotheque {
 	
 	public void afficheListeAdherent(LinkedList<Adherent>TabAdh)
 	{
-		System.out.format("%135s\n","---------------------------------------------------------------------------------------------------------------------------------");
-		System.out.format("%15s|%10s|%3s|%32s|%10s|%10s|%9s|%16s|%16s|%4s\n","ID ","TYPE","NB","TITRE","SALLE","RAYON","DATE","AUTEUR","EDITION","FREQ");
-		System.out.format("%135s\n","---------------------------------------------------------------------------------------------------------------------------------");
-		System.out.format("%135s\n","---------------------------------------------------------------------------------------------------------------------------------");
+		System.out.format("%105s\n","---------+--------+--------+------------+------------+-------------------------------+----+----+---");
+		System.out.format("%15s|%10s|%12s|%12s|%32s|%3s|%3s|%3s|%6s\n","ID ","TYPE","NOM","PRENOM","ADRESSE","NBE","NBD","NBC","STATUT");
+		System.out.format("%105s\n","---------------------------------------------------------------------------------------------------");
+		System.out.format("%105s\n","---------------------------------------------------------------------------------------------------");
 		
 		for(Adherent A1 : TabAdh)
             A1.afficheAdherent();
@@ -475,15 +480,18 @@ public class Bibliotheque {
 	
 	
 	public void afficheDocument(Document D) {
-		System.out.println(D.toString());
+		System.out.format("%135s\n","+________+__________+___+________________________________+__________+__________+_________+________________+________________+____+");
+		System.out.format("%15s|%10s|%3s|%32s|%10s|%10s|%9s|%16s|%16s|%4s|\n","ID ","TYPE","NB","TITRE","SALLE","RAYON","DATE","AUTEUR","EDITION","FREQ");
+		System.out.format("%135s\n","|________|__________|___|________________________________|__________|__________|_________|________________|________________|____|");
+		System.out.format("%135s\n","+--------+----------+---+--------------------------------+----------+----------+---------+----------------+----------------+----+");
+		 D.afficheDocument();
 	}
 	public void afficheListeDocument(LinkedList<Document>TabDoc)
 	{
-		System.out.format("%135s\n","---------------------------------------------------------------------------------------------------------------------------------");
-		System.out.format("%15s|%10s|%3s|%32s|%10s|%10s|%9s|%16s|%16s|%4s\n","ID ","TYPE","NB","TITRE","SALLE","RAYON","DATE","AUTEUR","EDITION","FREQ");
-		
-		System.out.format("%135s\n","---------------------------------------------------------------------------------------------------------------------------------");
-		System.out.format("%135s\n","---------------------------------------------------------------------------------------------------------------------------------");
+		System.out.format("%135s\n","+________+__________+___+________________________________+__________+__________+_________+________________+________________+____+");
+		System.out.format("%15s|%10s|%3s|%32s|%10s|%10s|%9s|%16s|%16s|%4s|\n","ID ","TYPE","NB","TITRE","SALLE","RAYON","DATE","AUTEUR","EDITION","FREQ");
+		System.out.format("%135s\n","|________|__________|___|________________________________|__________|__________|_________|________________|________________|____|");
+		System.out.format("%135s\n","+--------+----------+---+--------------------------------+----------+----------+---------+----------------+----------------+----+");
 		for(Document D1 : TabDoc)
            D1.afficheDocument();
 	}
@@ -495,6 +503,7 @@ public class Bibliotheque {
 
 		int i=0;
 		sc1 = new Scanner(System.in);
+		Scanner sc = new Scanner(System.in);
 	    Localistion localisation = new Localistion();
 		if(docs.size()!=0)
 			D.setId_doc((docs.getLast()).getId_doc()+1);
@@ -508,6 +517,12 @@ public class Bibliotheque {
 		D.setLocalisation(localisation);
 		System.out.println("nombe d'exemplaires : ");
 		D.setNbre_exemp(sc1.nextInt());
+		System.out.println("Nom auteur :");
+		D.setNomAuthor(sc.nextLine());
+		System.out.println("Nom Editeur :");
+		D.setNomEdition(sc.nextLine());
+		System.out.println("Date édition :");
+		D.setDateDocument(new Date(sc.nextLine()));
 		
 		docs.add(D);
 		
@@ -582,19 +597,21 @@ public class Bibliotheque {
 						Livre L =new Livre();
 					
 						L=(Livre)D;
+						Scanner sc = new Scanner(System.in);
 	//	L.affiche_livres(L);
+						this.afficheDocument(L);
 						System.out.println("Veuillez saisir les nouvelles donnees du document "+id);
 						System.out.print("Titre : ");
 					    L.setTitre(sc1.nextLine());
 					    System.out.print("Nombre d'exemplaire : ");
 					    L.setNbre_exemp(sc1.nextInt());
-						System.out.print("\nNom de l'auteur : ");
-					    L.setNomAuthor(sc1.nextLine());
-					    System.out.println("\nNom de l'éditeur : ");
-					    L.setNomEdition(sc1.nextLine());
-					    System.out.println("Date d'edition: ");
-					    Date day = new Date(sc1.nextLine());
-					    L.setDateEdition(day);
+						System.out.print("Nom de l'auteur : ");
+					    L.setNomAuthor(sc.nextLine());
+					    System.out.print("Nom de l'éditeur : ");
+					    L.setNomEdition(sc.nextLine());
+					    System.out.print("Date d'edition: ");
+					    Date day = new Date(sc.nextLine());
+					    L.setDateDocument(day);
 					}
 					break;
 				}
@@ -761,7 +778,9 @@ public class Bibliotheque {
 			System.out.println("Veuillez donner un nombre valide");
 			choix_adh=sc1.nextInt();}
 			if(choix_adh ==2)
-			{System.out.println("Operation Terminé");}
+			{System.out.println("Operation Terminé");
+				
+			}
 		}
 		
 	}

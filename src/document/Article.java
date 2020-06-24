@@ -31,8 +31,8 @@ public class Article extends Document {
 	@Override
 	public void afficheDocument() {
 		SimpleDateFormat formater = new SimpleDateFormat("dd-MM-yy");
-		System.out.format("%15d|%10s|%3d|%32s|%10s|%10s|%9s|%16s|%16s\n",id_doc,type,nbre_exemp,titre,localisation.getSalle(),localisation.getRayon(),formater.format(datePubication),nomAuthor,"None");
-		System.out.format("%135s\n","---------------------------------------------------------------------------------------------------------------------------------");
+		System.out.format("%15d|%10s|%3d|%32s|%10s|%10s|%9s|%16s|%16s|%4s|\n",id_doc,type,nbre_exemp,titre,localisation.getSalle(),localisation.getRayon(),formater.format(datePubication),nomAuthor,"None","None");
+		System.out.format("%135s\n","|--------|----------|---|--------------------------------|----------|----------|---------|----------------|----------------|----|");
 	}
 	
 	
