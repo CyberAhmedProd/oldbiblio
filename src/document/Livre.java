@@ -1,5 +1,6 @@
 package document;
 import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import utility.Localistion;
 
@@ -36,17 +37,10 @@ public class Livre extends Document{
 		this.dateEdition = dateEdition;
 	}
 	@Override
-	public String toString() {
-		DateFormat shortDateFormat = DateFormat.getDateTimeInstance(
-		        DateFormat.SHORT,
-		        DateFormat.SHORT);
-		return "Livre [nomAuthor=" + nomAuthor + ", nomEdition=" + nomEdition + ", dateEdition=" + dateEdition
-				+ ", id_doc=" + id_doc + ", titre=" + titre + ", localisation=" + localisation + ", type=" + type
-				+ ", nbre_exemp=" + nbre_exemp + ", getNomAuthor()=" + getNomAuthor() + ", getNomEdition()="
-				+ getNomEdition() + ", getDateEdition()=" + getDateEdition() + ", getId_doc()=" + getId_doc()
-				+ ", getTitre()=" + getTitre() + ", getLocalisation()=" + getLocalisation() + ", getType()=" + getType()
-				+ ", getNbre_exemp()=" + getNbre_exemp() + ", getClass()=" + getClass() + ", hashCode()=" + hashCode()
-				+ ", toString()=" + super.toString() + "]";
+	public void afficheDocument() {
+		SimpleDateFormat formater = new SimpleDateFormat("dd-MM-yy");
+		System.out.format("%15d|%10s|%3d|%32s|%10s|%10s|%9s|%16s|%16s\n",id_doc,type,nbre_exemp,titre,localisation.getSalle(),localisation.getRayon(),formater.format(dateEdition),nomAuthor,nomEdition);
+		System.out.format("%135s\n","---------------------------------------------------------------------------------------------------------------------------------");
 	}
 	
 	

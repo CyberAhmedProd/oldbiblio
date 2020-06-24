@@ -162,13 +162,16 @@ public class Bibliotheque {
 		Localistion L1 = new Localistion("S1","R1");
 		Localistion L2 = new Localistion("S2","R2");
 		Localistion L3 = new Localistion("S3","R3");
-		Date date1 = new Date(17/11/1992);
-		Date date2 = new Date(11/02/2020);
-		Date date3 = new Date(27/01/2002);
+		Date date1 = new Date("17/11/1992"); // verif date ?? 
+		Date date2 = new Date("11/02/2020");
+		Date date3 = new Date("27/07/2002");
+		Date date4 = new Date("01/06/2003");
+		Date date5 = new Date("02/05/2004");
+		Date date6 = new Date("15/03/2005");
 		Article d1 = new Article("la vie en rose",L1,"Article",11,"Victor",date1);
 		Article d2 = new Article("La chimie pour les nulles",L2,"Article",40,"Van'toff",date2);
-		Livre d3 = new Livre("notre dame de paris",L3,"Livre",10,"victor","Hugo",date1);
-		Livre d4 = new Livre("without love",L1,"Livre",5,"john","doe",date3);
+		Livre d3 = new Livre("notre dame de paris",L3,"Livre",10,"victor","Hugo",date3);
+		Livre d4 = new Livre("without love",L1,"Livre",5,"john","doe",date4);
 		Magazine d5 = new Magazine("code du zero",L2,"Magazine",500,12);
 		Magazine d6 = new Magazine("arduino",L2,"Magazine",500,12);
 		
@@ -188,17 +191,19 @@ public class Bibliotheque {
 	// ******#adherent*********************************************************************************CyberAhmedProd*******************
 	// *****************Methode Gestion des Aherents *********************************************************************************
 	// **********************************************************************************************************CyberAhmedProd***********
-	// Affichage Aherent
+	// Affichage Adherent
 	
 	
-	public void afficheAdherent(Adherent A) {
-		System.out.println(A.toString());
-	}
+	
 	public void afficheListeAdherent(LinkedList<Adherent>TabAdh)
 	{
+		System.out.format("%135s\n","---------------------------------------------------------------------------------------------------------------------------------");
+		System.out.format("%15s|%10s|%3s|%32s|%10s|%10s|%9s|%16s|%16s|%4s\n","ID ","TYPE","NB","TITRE","SALLE","RAYON","DATE","AUTEUR","EDITION","FREQ");
+		System.out.format("%135s\n","---------------------------------------------------------------------------------------------------------------------------------");
+		System.out.format("%135s\n","---------------------------------------------------------------------------------------------------------------------------------");
 		
 		for(Adherent A1 : TabAdh)
-            System.out.println(A1.toString());
+            A1.afficheAdherent();
 	}
 	
 	// *****************************************************************************************************************************
@@ -233,7 +238,7 @@ public class Bibliotheque {
 			if(TabAdh.get(i).getIdAdherent()==id)
 			{
 				
-				this.afficheAdherent(TabAdh.get(i)); 
+				TabAdh.get(i).afficheAdherent(); 
 				exist=true;
 			}
 			
@@ -466,7 +471,7 @@ public class Bibliotheque {
 	// -*********#document****************************************Gestion des document ******************************************************
 	// ******************************************************************************************************************************
 	
-	// Affichage Aherent
+	// Affichage Document
 	
 	
 	public void afficheDocument(Document D) {
@@ -474,10 +479,11 @@ public class Bibliotheque {
 	}
 	public void afficheListeDocument(LinkedList<Document>TabDoc)
 	{
-		System.out.format("\u001B[31m%120s\n","-------------------------------------------------------------------------------------------------------");
-		System.out.format("%25s|%10s|%3s|%32s|%10s|%10s|%9s\n","ID ","TYPE","NB","TITRE","SALLE","RAYON","Date PUb");
-		System.out.format("%120s\n","-------------------------------------------------------------------------------------------------------");
-		System.out.format("%120s\n","-------------------------------------------------------------------------------------------------------");
+		System.out.format("%135s\n","---------------------------------------------------------------------------------------------------------------------------------");
+		System.out.format("%15s|%10s|%3s|%32s|%10s|%10s|%9s|%16s|%16s|%4s\n","ID ","TYPE","NB","TITRE","SALLE","RAYON","DATE","AUTEUR","EDITION","FREQ");
+		
+		System.out.format("%135s\n","---------------------------------------------------------------------------------------------------------------------------------");
+		System.out.format("%135s\n","---------------------------------------------------------------------------------------------------------------------------------");
 		for(Document D1 : TabDoc)
            D1.afficheDocument();
 	}

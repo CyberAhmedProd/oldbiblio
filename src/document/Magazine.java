@@ -1,5 +1,7 @@
 package document;
 
+import java.text.SimpleDateFormat;
+
 import utility.Localistion;
 
 public class Magazine extends Document{
@@ -24,13 +26,10 @@ public class Magazine extends Document{
 	}
 
 	@Override
-	public String toString() {
-		return "Magazine [frequence=" + frequence + ", id_doc=" + id_doc + ", titre=" + titre + ", localisation="
-				+ localisation + ", type=" + type + ", nbre_exemp=" + nbre_exemp + ", getFrequence()=" + getFrequence()
-				+ ", getId_doc()=" + getId_doc() + ", getTitre()=" + getTitre() + ", getLocalisation()="
-				+ getLocalisation() + ", getType()=" + getType() + ", getNbre_exemp()=" + getNbre_exemp()
-				+ ", getClass()=" + getClass() + ", hashCode()=" + hashCode() + ", toString()=" + super.toString()
-				+ "]";
+	public void afficheDocument() {
+		SimpleDateFormat formater = new SimpleDateFormat("dd-MM-yy");
+		System.out.format("%15d|%10s|%3d|%32s|%10s|%10s|%9s|%16s|%16s|%4d\n",id_doc,type,nbre_exemp,titre,localisation.getSalle(),localisation.getRayon(),"None","None","None",frequence);
+		System.out.format("%135s\n","---------------------------------------------------------------------------------------------------------------------------------");
 	}
 	
 	

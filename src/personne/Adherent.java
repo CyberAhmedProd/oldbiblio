@@ -1,5 +1,7 @@
 package personne;
 
+import java.text.SimpleDateFormat;
+
 public class Adherent {
 	protected int idAdherent = 1;
 	protected String nom;
@@ -90,6 +92,11 @@ public class Adherent {
 				+ ", nbEmpruntDepasses=" + nbEmpruntDepasses + ", nbEmpruntEncours=" + nbEmpruntEncours
 				+ ", maxDayEmprunt=" + maxDayEmprunt + "]";
 	}
-		
+	
+	public void afficheAdherent() {
+		SimpleDateFormat formater = new SimpleDateFormat("dd-MM-yy");
+		System.out.format("%15d|%10s|%12s|%12s|%22s|%10d|%10d|%10d|%16s\n",idAdherent,type,nom,prenom,addresse,nbEmpruntEffectues,nbEmpruntDepasses,nbEmpruntEncours,"None");
+		System.out.format("%135s\n","---------------------------------------------------------------------------------------------------------------------------------");
+	}
 
 }
