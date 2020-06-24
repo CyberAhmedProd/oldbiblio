@@ -3,7 +3,7 @@ package document;
 import java.util.Date;
 
 import utility.Localistion;
-
+import java.text.SimpleDateFormat;
 public class Article extends Document {
 	private String nomAuthor;
 	private Date datePubication;
@@ -29,14 +29,10 @@ public class Article extends Document {
 		this.datePubication = datePubication;
 	}
 	@Override
-	public String toString() {
-		return "Article [nomAuthor=" + nomAuthor + ", datePubication=" + datePubication + ", id_doc=" + id_doc
-				+ ", titre=" + titre + ", localisation=" + localisation + ", type=" + type + ", nbre_exemp="
-				+ nbre_exemp + ", getNomAuthor()=" + getNomAuthor() + ", getDatePubication()=" + getDatePubication()
-				+ ", getId_doc()=" + getId_doc() + ", getTitre()=" + getTitre() + ", getLocalisation()="
-				+ getLocalisation() + ", getType()=" + getType() + ", getNbre_exemp()=" + getNbre_exemp()
-				+ ", getClass()=" + getClass() + ", hashCode()=" + hashCode() + ", toString()=" + super.toString()
-				+ "]";
+	public void afficheDocument() {
+		SimpleDateFormat formater = new SimpleDateFormat("dd-MM-yy");
+		System.out.format("%25d|%10s|%3d|%32s|%10s|%10s|%9s\n",id_doc,type,nbre_exemp,titre,localisation.getSalle(),localisation.getRayon(),formater.format(datePubication));
+		System.out.format("%120s\n","-------------------------------------------------------------------------------------------------------");
 	}
 	
 	

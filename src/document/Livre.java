@@ -1,7 +1,6 @@
 package document;
-
+import java.text.DateFormat;
 import java.util.Date;
-
 import utility.Localistion;
 
 public class Livre extends Document{
@@ -38,6 +37,9 @@ public class Livre extends Document{
 	}
 	@Override
 	public String toString() {
+		DateFormat shortDateFormat = DateFormat.getDateTimeInstance(
+		        DateFormat.SHORT,
+		        DateFormat.SHORT);
 		return "Livre [nomAuthor=" + nomAuthor + ", nomEdition=" + nomEdition + ", dateEdition=" + dateEdition
 				+ ", id_doc=" + id_doc + ", titre=" + titre + ", localisation=" + localisation + ", type=" + type
 				+ ", nbre_exemp=" + nbre_exemp + ", getNomAuthor()=" + getNomAuthor() + ", getNomEdition()="

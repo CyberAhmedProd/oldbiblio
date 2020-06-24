@@ -17,7 +17,7 @@ import utility.Localistion;
 public class Bibliotheque {
 	Scanner sc1;
 	public static void main(String[] args) {
-		// créer un objet de la classe ArrayList
+		// crï¿½er un objet de la classe ArrayList
 				// parti declaration 
 				Bibliotheque bib = new Bibliotheque();
 				
@@ -46,9 +46,9 @@ public class Bibliotheque {
 		int choose;
 		while(choix==1) {
 			System.out.println("Que voulez-vous faire ?");
-	        System.out.println("\t1 - Gérer Adherents");
-	        System.out.println("\t2 - Gérer Documents");
-	        System.out.println("\t3 - Gérer emprunts");
+	        System.out.println("\t1 - GÃ©rer Adherents");
+	        System.out.println("\t2 - GÃ©rer Documents");
+	        System.out.println("\t3 - GÃ©rer emprunts");
 	        System.out.println("\t4 - Quitter");
 			System.out.println("Entrer le numero correspondant : ");
 			choose=sc1.nextInt();
@@ -136,6 +136,8 @@ public class Bibliotheque {
 }
 	// **********************************************************************************************************CyberAhmedProd***********
 	// **  *************************** INIT METHOD **********************************************************************************
+	// **********************************************************************************************************CyberAhmedProd***********
+	// init la list des Adherent (Etudiant Enseignant and Visit)
 	public void initTabAherent(LinkedList<Adherent> TabAdh) {
 		Enseignant A1 = new Enseignant("ahmed ", " ahmed ", " 10 avenue "," Enseignant ");
 		Enseignant A2 = new Enseignant("rami ", " rami ", " 10 avenues "," Enseignant ");
@@ -152,7 +154,8 @@ public class Bibliotheque {
 		this.pushAdherent(TabAdh, A6);
 		
 	}
-	
+	// **********************************************************************************************************CyberAhmedProd***********
+	// init list des Documents ( Livre Magazine and Article )
 	
 	public void initTabDocument(LinkedList<Document> TabAdh) {
 	
@@ -182,9 +185,9 @@ public class Bibliotheque {
 	
 	
 	
-	// ************************************************************************************************CyberAhmedProd*******************
+	// ******#adherent*********************************************************************************CyberAhmedProd*******************
 	// *****************Methode Gestion des Aherents *********************************************************************************
-	
+	// **********************************************************************************************************CyberAhmedProd***********
 	// Affichage Aherent
 	
 	
@@ -320,14 +323,14 @@ public class Bibliotheque {
 				System.out.println("Veuillez donner un nombre valide ");
 				choix_add=sc1.nextInt();}
 				if(choix_add ==2)
-				{System.out.println("Operation Terminé");}
+				{System.out.println("Operation TerminÃ©");}
 				while(choix_add==1) {
 					System.out.print("\n\t\t\t\t\t\tAppuyez\n\t\t1 -  pour Etudiant");
 					System.out.print("\t\t2 -  pour  Enseignant");
 					System.out.print("\t\t3 - pour Visiteur");
 					System.out.println("\nEntrer le numero correspondant : ");
 					choose_add=sc1.nextInt();
-					n=lire_n("Donner le nombre  d'Adherents pour cette opération : ");
+					n=lire_n("Donner le nombre  d'Adherents pour cette opÃ©ration : ");
 					switch(choose_add) {
 					
 						case 1:
@@ -367,7 +370,7 @@ public class Bibliotheque {
 				System.out.println("Veuillez donner un nombre valide ");
 				choix_add=sc1.nextInt();}
 				if(choix_add ==2)
-				{System.out.println("Operation Terminé");}
+				{System.out.println("Operation TerminÃ©");}
 
 				}
 				
@@ -388,7 +391,7 @@ public class Bibliotheque {
 				System.out.println("Veuillez donner un nombre valide ");
 				choix_sup=sc1.nextInt();}
 				if(choix_sup ==2)
-				{System.out.println("Operation Terminé");}
+				{System.out.println("Operation TerminÃ©");}
 
 				}
 				System.out.println(" \n Actualisation de la liste  \n ");
@@ -412,7 +415,7 @@ public class Bibliotheque {
 						choix_mod=sc1.nextInt();
 					}
 					if(choix_mod ==2)
-						System.out.println("Operation Terminé");
+						System.out.println("Operation TerminÃ©");
 
 				}
 				System.out.println(" \n Actualisation de la liste des informatioms \n ");
@@ -434,7 +437,7 @@ public class Bibliotheque {
 						choix_rec=sc1.nextInt();
 					}
 					if(choix_rec ==2)
-						System.out.println("Operation Terminé");
+						System.out.println("Operation Terminï¿½");
 
 				}
 
@@ -451,7 +454,7 @@ public class Bibliotheque {
 			System.out.println("Veuillez donner un nombre valide ");
 			choix_adh=sc1.nextInt();}
 			if(choix_adh ==2)
-				System.out.println("Operation Terminé");
+				System.out.println("Operation Terminï¿½");
 		}
 	}
 	
@@ -471,12 +474,16 @@ public class Bibliotheque {
 	}
 	public void afficheListeDocument(LinkedList<Document>TabDoc)
 	{
-		
+		System.out.format("\u001B[31m%120s\n","-------------------------------------------------------------------------------------------------------");
+		System.out.format("%25s|%10s|%3s|%32s|%10s|%10s|%9s\n","ID ","TYPE","NB","TITRE","SALLE","RAYON","Date PUb");
+		System.out.format("%120s\n","-------------------------------------------------------------------------------------------------------");
+		System.out.format("%120s\n","-------------------------------------------------------------------------------------------------------");
 		for(Document D1 : TabDoc)
-            System.out.println(D1.toString());
+           D1.afficheDocument();
 	}
 	// ----------------------------------------------------------------------------------------------------------------------------
 	// ajouter  Article
+	// -----------------------------------------------------------------------------------------------------------------
 	public void ajouterDocument(LinkedList<Document> docs, Document D){
 		
 
@@ -527,7 +534,7 @@ public class Bibliotheque {
 	// modify document * - * - *----------- -*-**---*-----------------*-*-*-*--******
 	// ------------------------***********************************-********-*--******************
 	
-	public void modifier(LinkedList<Document> TabAdh,int id){
+	public void modifierDocument(LinkedList<Document> TabAdh,int id){
 	
 		Scanner sc1 = new Scanner(System.in);
 		if(existDoc(TabAdh,id)==null)
@@ -538,6 +545,7 @@ public class Bibliotheque {
 				if(D.equals(existDoc(TabAdh,id))){
 					if(D instanceof Article){ 
 						Article A=new Article();
+						Scanner sc = new Scanner(System.in);
 						A=(Article)D;
 						System.out.println("Veuillez saisir les nouvelles donnees du document " +id);
 						System.out.print("Titre : ");
@@ -545,9 +553,9 @@ public class Bibliotheque {
 					    System.out.print("Nombre d'exemplaire : ");
 					    A.setNbre_exemp(sc1.nextInt());
 					    System.out.print("\nNom de l'auteur : ");
-				        A.setNomAuthor(sc1.nextLine());
+				        A.setNomAuthor(sc.nextLine());
 				        System.out.println("Date de publication : ");
-				        Date newDate = new Date(sc1.nextLine());
+				        Date newDate = new Date(sc.nextLine()); // reglage es date ? ?? ? ?
 				        A.setDatePubication(newDate);
 		
 					}
@@ -576,7 +584,7 @@ public class Bibliotheque {
 					    L.setNbre_exemp(sc1.nextInt());
 						System.out.print("\nNom de l'auteur : ");
 					    L.setNomAuthor(sc1.nextLine());
-					    System.out.println("\nNom de l'éditeur : ");
+					    System.out.println("\nNom de l'Ã©diteur : ");
 					    L.setNomEdition(sc1.nextLine());
 					    System.out.println("Date d'edition: ");
 					    Date day = new Date(sc1.nextLine());
@@ -589,6 +597,8 @@ public class Bibliotheque {
 	}
 	
 	
+	// -------------------**--*-*-**-*--------------************-*-*--************************-CyberAhmedProd
+	// -------************Interface gestion des documents *****************************************-----------
 	
 	public   void Doc(LinkedList<Document>Tab)
 	{		
@@ -618,7 +628,7 @@ public class Bibliotheque {
 				System.out.println("Veuillez donner un nombre valide");
 				choix_add=sc1.nextInt();}
 				if(choix_add ==2)
-				{System.out.println("Operation Terminé");}
+				{System.out.println("Operation TerminÃ©");}
 				
 				while(choix_add==1) {
 					System.out.print("\n\t\t\t\t\t\tAppuyez\n\t\t1 -  pour Article");
@@ -626,7 +636,7 @@ public class Bibliotheque {
 					System.out.print("\t\t3 - pour Magazine");
 					System.out.println("\nEntrer le numero correspondant : ");
 					choose_add=sc1.nextInt();
-					n=lire_n("Donner le nombre  de documents pour cette opération : ");
+					n=lire_n("Donner le nombre  de documents pour cette opÃ©ration : ");
 					switch(choose_add) {
 					
 						case 1:
@@ -665,7 +675,7 @@ public class Bibliotheque {
 				System.out.println("Veuillez donner un nombre valide");
 				choix_add=sc1.nextInt();}
 				if(choix_add ==2)
-				{System.out.println("Operation Terminé");}
+				{System.out.println("Operation TerminÃ©");}
 
 				}
 				D= new Document();
@@ -686,7 +696,7 @@ public class Bibliotheque {
 				System.out.println("Veuillez donner un nombre valide ");
 				choix_sup=sc1.nextInt();}
 				if(choix_sup ==2)
-				{System.out.println("Operation Terminé");}
+				{System.out.println("Operation TerminÃ©");}
 
 				}
 				System.out.println(" \n Actualisation de la liste  \n ");
@@ -699,14 +709,14 @@ public class Bibliotheque {
 				while(choix_mod==1) {	
 					Document D= new Document();
 							System.out.println("Donner l'Id du Documemt ");
-							this.modifier(Tab,sc1.nextInt());
+							this.modifierDocument(Tab,sc1.nextInt());
 				System.out.println("\nVoulez vous recommencer la modification.Appuyez \n 1 pour oui \t 2 pour non ");
 				choix_mod=sc1.nextInt();
 				while(choix_mod<1 && choix_mod >2 ) {
 				System.out.println("Veuillez donner un nombre valide ");
 				choix_mod=sc1.nextInt();}
 				if(choix_mod ==2)
-				{System.out.println("Operation Terminé");}
+				{System.out.println("Operation TerminÃ©");}
 
 				}
 				System.out.println(" \n Actualisation de la liste des informatioms \n ");
@@ -726,7 +736,7 @@ public class Bibliotheque {
 			System.out.println("Veuillez donner un nombre valide ");
 			choix_rec=sc1.nextInt();}
 			if(choix_rec ==2)
-			{System.out.println("Operation Terminé");}
+			{System.out.println("Operation Terminï¿½");}
 
 			}
 			
@@ -745,7 +755,7 @@ public class Bibliotheque {
 			System.out.println("Veuillez donner un nombre valide");
 			choix_adh=sc1.nextInt();}
 			if(choix_adh ==2)
-			{System.out.println("Operation Terminé");}
+			{System.out.println("Operation TerminÃ©");}
 		}
 		
 	}

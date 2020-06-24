@@ -49,8 +49,13 @@ public class Document {
 	}
 	@Override
 	public String toString() {
-		return "Document [id_doc=" + id_doc + ", titre=" + titre + ", salle=" + localisation.getSalle() +", rayon=" + localisation.getRayon() + ", type=" + type
-				+ ", nbre_exemp=" + nbre_exemp + "]";
+		
+		return "["+type+"|id_doc=" + id_doc + "| titre=" + titre + "| salle=" + localisation.getSalle() +"| rayon=" + localisation.getRayon() +  "| nbre_exemp=" + nbre_exemp+"|";
 	}
+	public void afficheDocument() {
+		// TODO Auto-generated method stub
+		
+	}
+	
 	
 }
