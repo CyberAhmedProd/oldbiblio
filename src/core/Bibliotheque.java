@@ -202,10 +202,10 @@ public class Bibliotheque {
 	
 	public void afficheListeAdherent(LinkedList<Adherent>TabAdh)
 	{
-		System.out.format("%105s\n","---------+--------+--------+------------+------------+-------------------------------+----+----+---");
-		System.out.format("%15s|%10s|%12s|%12s|%32s|%3s|%3s|%3s|%6s\n","ID ","TYPE","NOM","PRENOM","ADRESSE","NBE","NBD","NBC","STATUT");
-		System.out.format("%105s\n","---------------------------------------------------------------------------------------------------");
-		System.out.format("%105s\n","---------------------------------------------------------------------------------------------------");
+		System.out.format("%105s\n","---------+----------+------------+------------+--------------------------------+---+---+---+-------");
+		System.out.format("%15s|%10s|%12s|%12s|%32s|%3s|%3s|%3s|%6s\n","ID ","TYPE  ","NOM    ","PRENOM   ","ADRESSE             ","NBE","NBD","NBC","STATUT");
+		System.out.format("%105s\n","_________|__________|____________|____________|________________________________|___|___|___|_______");
+		System.out.format("%105s\n","---------|----------|------------|------------|--------------------------------|---|---|---|-------");
 		
 		for(Adherent A1 : TabAdh)
             A1.afficheAdherent();
@@ -293,6 +293,14 @@ public class Bibliotheque {
 				TabAdh.get(i).setPrenom(sc.nextLine());
 				System.out.println("addresse : ");
 				TabAdh.get(i).setAddresse(sc.nextLine());
+				System.out.print("Nombre d'emprunt effectués :");
+				TabAdh.get(i).setNbEmpruntEffectues(sc.nextInt());
+				System.out.print("Nombre d'emprunt dépassés :");
+				TabAdh.get(i).setNbEmpruntDepasses(sc.nextInt());
+				System.out.print("Nombre d'emprunt en cour :");
+				TabAdh.get(i).setNbEmpruntEncours(sc.nextInt());
+				System.out.print("Etat adhérent :");
+				TabAdh.get(i).setStatus(new Scanner(System.in).nextLine());
 				exist=true;
 			}
 		}

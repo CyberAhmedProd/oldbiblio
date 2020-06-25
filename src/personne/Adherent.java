@@ -13,6 +13,7 @@ public class Adherent {
 	protected int nbEmpruntDepasses;
 	protected int nbEmpruntEncours;
 	protected int maxDayEmprunt;
+	protected String status = "None";
 	public Adherent() {
 		super();
 		// TODO Auto-generated constructor stub
@@ -85,6 +86,13 @@ public class Adherent {
 	public void setMaxDayEmprunt(int maxDayEmprunt) {
 		this.maxDayEmprunt = maxDayEmprunt;
 	}
+	
+	public String getStatus() {
+		return status;
+	}
+	public void setStatus(String status) {
+		this.status = status;
+	}
 	@Override
 	public String toString() {
 		return "Adherent [idAdherent=" + idAdherent + ", nom=" + nom + ", prenom=" + prenom + ", addresse=" + addresse
@@ -95,8 +103,8 @@ public class Adherent {
 	
 	public void afficheAdherent() {
 		SimpleDateFormat formater = new SimpleDateFormat("dd-MM-yy");
-		System.out.format("%15d|%10s|%12s|%12s|%32s|%3d|%3d|%3d|%6s\n",idAdherent,type,nom,prenom,addresse,nbEmpruntEffectues,nbEmpruntDepasses,nbEmpruntEncours,"None");
-		System.out.format("%135s\n","|--------|----------|---|--------------------------------|----------|----------|---------|----------------|----------------|----|");
+		System.out.format("%15d|%10s|%12s|%12s|%32s|%3d|%3d|%3d|%6s\n",idAdherent,type,nom,prenom,addresse,nbEmpruntEffectues,nbEmpruntDepasses,nbEmpruntEncours,status);
+		System.out.format("%105s\n","---------|----------|------------|------------|--------------------------------|---|---|---|-------");
 	}
 
 }
