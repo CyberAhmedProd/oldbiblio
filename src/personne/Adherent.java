@@ -13,7 +13,7 @@ public class Adherent {
 	protected int nbEmpruntDepasses;
 	protected int nbEmpruntEncours;
 	protected int maxDayEmprunt;
-	protected String status = "None";
+	protected String status = "none";
 	public Adherent() {
 		super();
 		// TODO Auto-generated constructor stub

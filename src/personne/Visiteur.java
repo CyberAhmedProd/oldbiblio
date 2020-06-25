@@ -10,7 +10,7 @@ public class Visiteur extends Adherent{
 	public Visiteur(String nom, String prenom, String addresse, String type) {
 		super(nom, prenom, addresse, type);
 		this.max_doc=1;
-		this.type="Visiteur";
+		this.type="visiteur";
 		this.maxDayEmprunt = 7;
 	}
 

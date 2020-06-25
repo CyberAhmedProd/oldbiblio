@@ -144,12 +144,12 @@ public class Bibliotheque {
 	// **********************************************************************************************************CyberAhmedProd***********
 	// init la list des Adherent (Etudiant Enseignant and Visit)
 	public void initTabAherent(LinkedList<Adherent> TabAdh) {
-		Enseignant A1 = new Enseignant("ahmed ", " ahmed ", " 10 avenue "," Enseignant ");
-		Enseignant A2 = new Enseignant("rami ", " rami ", " 10 avenues "," Enseignant ");
-		Visiteur A3 = new Visiteur("zod", " meo ", " 14 avenue "," Visiteur ");
-		Visiteur A4 = new Visiteur("laurent", " jad ", " 18 avenue "," Visiteur ");
-		Etudiant A5 = new Etudiant("ahmed", "gharbi", " 16 avenue "," Etudiant ");
-		Etudiant A6 = new Etudiant("mohamed", " salah ", " 15 avenue "," Etudiant ");
+		Enseignant A1 = new Enseignant("ahmed ", " ahmed ", " 10 avenue "," enseignant ");
+		Enseignant A2 = new Enseignant("rami ", " rami ", " 10 avenues "," enseignant ");
+		Visiteur A3 = new Visiteur("zod", " meo ", " 14 avenue "," visiteur ");
+		Visiteur A4 = new Visiteur("laurent", " jad ", " 18 avenue "," visiteur ");
+		Etudiant A5 = new Etudiant("ahmed", "gharbi", " 16 avenue "," etudiant ");
+		Etudiant A6 = new Etudiant("mohamed", " salah ", " 15 avenue "," etudiant ");
 		
 		this.pushAdherent(TabAdh, A1);
 		this.pushAdherent(TabAdh, A2);
@@ -173,12 +173,12 @@ public class Bibliotheque {
 		Date date4 = new Date("01/06/2003");
 		Date date5 = new Date("02/05/2004");
 		Date date6 = new Date("15/03/2005");
-		Article d1 = new Article("la vie en rose",L1,"Article",11,"Victor",date1);
-		Article d2 = new Article("La chimie pour les nulles",L2,"Article",40,"Van'toff",date2);
-		Livre d3 = new Livre("notre dame de paris",L3,"Livre",10,"victor","Hugo",date3);
-		Livre d4 = new Livre("without love",L1,"Livre",5,"john","doe",date4);
-		Magazine d5 = new Magazine("code du zero",L2,"Magazine",500,12);
-		Magazine d6 = new Magazine("arduino",L2,"Magazine",500,12);
+		Article d1 = new Article("la vie en rose",L1,"article",11,"Victor",date1);
+		Article d2 = new Article("La chimie pour les nulles",L2,"article",40,"Van'toff",date2);
+		Livre d3 = new Livre("notre dame de paris",L3,"livre",10,"victor","Hugo",date3);
+		Livre d4 = new Livre("without love",L1,"livre",5,"john","doe",date4);
+		Magazine d5 = new Magazine("code du zero",L2,"magazine",500,12);
+		Magazine d6 = new Magazine("arduino",L2,"magazine",500,12);
 		
 		
 		this.pushDocument(TabAdh, d1);
@@ -233,7 +233,7 @@ public class Bibliotheque {
 	}
 	// **************************************************************CyberAhmedProd***********************************************************
 	
-	// recherche By id Adherent
+	// recherche By id Adherent // ******************************************************************************************************
 	public void rechercheAdherent(LinkedList<Adherent> TabAdh,int id)
 	{
 		
@@ -255,6 +255,50 @@ public class Bibliotheque {
 		
 	}
 	
+	
+	// *********************************************************************************************************************************
+	// recherche by type Adherent *****************************************************************************************************
+	public void rechercheAdherentByType(LinkedList<Adherent> TabAdh,String type)
+	{
+		boolean exist =false ;
+		for(int i=0; i< TabAdh.size();i++)
+		{
+			if((TabAdh.get(i).getType()).equals(type))
+			{
+				
+				TabAdh.get(i).afficheAdherent(); 
+				exist=true;
+			}
+			
+		}
+		if(exist==false)
+		{
+			System.out.println("Personne inexistante");
+		}
+		
+	}
+	// *********************************************************************************************************************************
+		// recherche by stat Adherent *****************************************************************************************************
+		public void rechercheAdherentByStatus(LinkedList<Adherent> TabAdh,String status)
+		{
+			boolean exist =false ;
+			for(int i=0; i< TabAdh.size();i++)
+			{
+				if((TabAdh.get(i).getStatus()).equals(status))
+				{
+					
+					TabAdh.get(i).afficheAdherent(); 
+					exist=true;
+				}
+				
+			}
+			if(exist==false)
+			{
+				System.out.println("Personne inexistante");
+			}
+			
+		}
+		
 	// *************************************************************CyberAhmedProd*************************************************************
 	// delete Adherent ************************
 	public void supprimerAdherent(LinkedList<Adherent> TabAdh,int id)
@@ -273,6 +317,7 @@ public class Bibliotheque {
 			System.out.println("ID introuvable");
 		
 	}
+	
 	
 	
 	// *********************************************************************************************************************************************
@@ -443,22 +488,63 @@ public class Bibliotheque {
 			else if(choose_adh==4)
 			{
 				sc1 = new Scanner(System.in);
-				int choix_rec=1;
-				while(choix_rec==1) {
-				
-					System.out.println("Donner l'ID de l'adherent ");
-					this.rechercheAdherent(Tab,sc1.nextInt());
-					System.out.println("\nVoulez vous recommencer la recherche.Appuyez \n 1 pour oui \t 2 pour non ");
-					choix_rec=sc1.nextInt();
-					while(choix_rec<1 && choix_rec >2 ) {
-						System.out.println("Veuillez donner un nombre valide ");
+				System.out.println("\nChoix :  \t\t\t\t (1)ID \t\t\t (2)TYPE \t\t\t (3)Stat");
+				int choix_rec= sc1.nextInt();
+				// choix recherche selon le type ou l ID de l'adherent  1 pour id et 2 pour type
+				while(choix_rec==1 || choix_rec==2 || choix_rec==3) {
+					if(choix_rec==1)
+					{
+						System.out.println("Donner l'ID de l'adherent ");
+						
+						this.rechercheAdherent(Tab,sc1.nextInt());
+						System.out.println("\nVoulez vous recommencer la recherche.Appuyez \n 1 pour oui \t 4 pour non ");
 						choix_rec=sc1.nextInt();
+						while(choix_rec !=1 && choix_rec !=4 ) {
+							System.out.println("Veuillez donner un nombre valide ");
+							choix_rec=sc1.nextInt();
+						}
+						if(choix_rec ==4)
+							System.out.println("Operation Terminé");
 					}
-					if(choix_rec ==2)
-						System.out.println("Operation Termin�");
+					if(choix_rec==2)
+					{
+						System.out.println("Donner Type de l'adherent ");
+						Scanner scType = new Scanner(System.in);
+						// optimiser le code 
+						scType.nextLine();	
+						System.out.println("Confimer : ");
+						this.rechercheAdherentByType(Tab,scType.nextLine().toLowerCase());
+						System.out.println("\nVoulez vous recommencer la recherche.Appuyez \n 2 pour oui \t 4 pour non ");
+						choix_rec=sc1.nextInt();
+						while(choix_rec!=2 && choix_rec !=4 ) {
+							System.out.println("Veuillez donner un nombre valide ");
+							choix_rec=sc1.nextInt();
+						}
+						if(choix_rec ==4)
+							System.out.println("Operation Terminé");
+					}
+					if(choix_rec==3)
+					{
+						System.out.println("Donner Stat de l'adherent ");
+						Scanner scType = new Scanner(System.in);
+						// optimiser le code 
+						scType.nextLine();
+						System.out.println("confirmer");
+						this.rechercheAdherentByStatus(Tab,scType.nextLine());
+						System.out.println("\nVoulez vous recommencer la recherche.Appuyez \n 3 pour oui \t 4 pour non ");
+						
+						while(choix_rec!=3 && choix_rec !=4 ) {
+							System.out.println("Veuillez donner un nombre valide ");
+							choix_rec=sc1.nextInt();
+						}
+						if(choix_rec ==4)
+							System.out.println("Operation Terminé");
+					}
+					
 
 				}
-
+				
+				
 			}
 			else if(choose_adh==5)
 				this.afficheListeAdherent(Tab);
@@ -472,7 +558,7 @@ public class Bibliotheque {
 			System.out.println("Veuillez donner un nombre valide ");
 			choix_adh=sc1.nextInt();}
 			if(choix_adh ==2)
-				System.out.println("Operation Termin�");
+				System.out.println("Operation Terminé");
 		}
 	}
 	
@@ -483,6 +569,75 @@ public class Bibliotheque {
 	// ******************************CyberAhmedProd *********************************************************************************
 	// -*********#document****************************************Gestion des document ******************************************************
 	// ******************************************************************************************************************************
+	public void rechercheDocument(LinkedList<Document> TabDoc,int id)
+	{
+		
+		boolean exist =false ;
+		for(int i=0; i< TabDoc.size() && exist ==false;i++)
+		{
+			if(TabDoc.get(i).getId_doc()==id)
+			{
+				
+				TabDoc.get(i).afficheDocument(); 
+				exist=true;
+			}
+			
+		}
+		if(exist==false)
+		{
+			System.out.println("Personne inexistante");
+		}
+		
+	}
+	
+	
+	// *********************************************************************************************************************************
+	// recherche by type Adherent *****************************************************************************************************
+	public void rechercheDocumentByType(LinkedList<Document> TabDoc,String type)
+	{
+		boolean exist =false ;
+		for(int i=0; i< TabDoc.size();i++)
+		{
+			if((TabDoc.get(i).getType()).equals(type))
+			{
+				
+				TabDoc.get(i).afficheDocument(); 
+				exist=true;
+			}
+			
+		}
+		if(exist==false)
+		{
+			System.out.println("Personne inexistante");
+		}
+		
+	}
+	// *********************************************************************************************************************************
+		// recherche by stat Adherent *****************************************************************************************************
+		public void rechercheDocumentByTitre(LinkedList<Document> TabDoc,String title)
+		{
+			boolean exist =false ;
+			for(int i=0; i< TabDoc.size();i++)
+			{
+				if((TabDoc.get(i).getTitre()).equals(title))
+				{
+					
+					TabDoc.get(i).afficheDocument(); 
+					exist=true;
+				}
+				
+			}
+			if(exist==false)
+			{
+				System.out.println("Personne inexistante");
+			}
+			
+		}
+	
+	
+	
+	
+	
 	
 	// Affichage Document
 	
@@ -754,24 +909,69 @@ public class Bibliotheque {
 				this.afficheListeDocument(Tab);
 
 			}
-			/*else if(choose_adh==4)
-			{sc1 = new Scanner(System.in);
-			int choix_rec=1;
-			while(choix_rec==1) {
-				D= new Document();
-				System.out.println("Donner l'ID du Documemt ");
-				D.recherche(Tab,sc1.nextInt());
-			System.out.println("\nVoulez vous recommencer la recherche.Appuyez \n 1 pour oui \t 2 pour non ");
-			choix_rec=sc1.nextInt();
-			while(choix_rec<1 && choix_rec >2 ) {
-			System.out.println("Veuillez donner un nombre valide ");
-			choix_rec=sc1.nextInt();}
-			if(choix_rec ==2)
-			{System.out.println("Operation Termin�");}
+			else if(choose_adh==4)
+			{
+				sc1 = new Scanner(System.in);
+				System.out.println("\nChoix :  \t\t\t\t (1)ID \t\t\t (2)TYPE \t\t\t (3)Titre");
+				int choix_rec= sc1.nextInt();
+				// choix recherche selon le type ou l ID de l'adherent  1 pour id et 2 pour type
+				while(choix_rec==1 || choix_rec==2 || choix_rec==3) {
+					if(choix_rec==1)
+					{
+						System.out.println("Donner l'ID du Document ");
+						
+						this.rechercheDocument(Tab,sc1.nextInt());
+						System.out.println("\nVoulez vous recommencer la recherche.Appuyez \n 1 pour oui \t 4 pour non ");
+						choix_rec=sc1.nextInt();
+						while(choix_rec!=1 && choix_rec !=4 ) {
+							System.out.println("Veuillez donner un nombre valide ");
+							choix_rec=sc1.nextInt();
+						}
+						if(choix_rec ==4)
+							System.out.println("Operation Terminé");
+					}
+					if(choix_rec==2)
+					{
+						System.out.println("Donner Type du Document ");
+						Scanner scType = new Scanner(System.in);
+						// optimiser le code 
+						scType.nextLine();	
+						System.out.println("Confimer : ");
+						this.rechercheDocumentByType(Tab,scType.nextLine().toLowerCase());
+						System.out.println("\nVoulez vous recommencer la recherche.Appuyez \n 2 pour oui \t 4 pour non ");
+						choix_rec=sc1.nextInt();
+						while(choix_rec!=2 && choix_rec !=4 ) {
+							System.out.println("Veuillez donner un nombre valide ");
+							choix_rec=sc1.nextInt();
+						}
+						if(choix_rec ==4)
+							System.out.println("Operation Terminé");
+					}
+					if(choix_rec==3)
+					{
+						System.out.println("Donner Nom de l'auteur ");
+						Scanner scType = new Scanner(System.in);
+						// optimiser le code 
+						scType.nextLine();
+						System.out.println("confirmer");
+						this.rechercheDocumentByTitre(Tab,scType.nextLine());
+						System.out.println("\nVoulez vous recommencer la recherche.Appuyez \n 3 pour oui \t 4 pour non ");
+						
+						while(choix_rec!=3 && choix_rec !=4 ) {
+							System.out.println("Veuillez donner un nombre valide ");
+							choix_rec=sc1.nextInt();
+						}
+						if(choix_rec ==4)
+							System.out.println("Operation Terminé");
+					}
+					
 
+				}
+				
+				
 			}
 			
-			}*/
+			
 			else if(choose_adh==5)
 			{
 				Document D= new Document();
