@@ -462,7 +462,7 @@ public class Bibliotheque {
 						choix_rec=sc1.nextInt();
 					}
 					if(choix_rec ==2)
-						System.out.println("Operation Terminï¿½");
+						System.out.println("Operation TerminÃ©");
 
 				}
 
@@ -479,7 +479,7 @@ public class Bibliotheque {
 			System.out.println("Veuillez donner un nombre valide ");
 			choix_adh=sc1.nextInt();}
 			if(choix_adh ==2)
-				System.out.println("Operation Terminï¿½");
+				System.out.println("Operation TerminÃ©");
 		}
 	}
 	
@@ -831,8 +831,8 @@ public class Bibliotheque {
 	public void afficheListeEmprunt(LinkedList<Emprunt>TabAdh)
 	{
 		System.out.format("%105s\n","+------------+--------------------------------+---+---+---+-----------");
-		System.out.format("|%12s%32s|%3s|%3s|%3s|%10s\n","NOM    ","DOC EMPRUNTE   ","NBE","NBD","NBC","STATUT");
-		System.out.format("%105s\n","|____________|________________________________|___|___|___|___________");
+		System.out.format("%32s|%32s|%10s|%10s\n","NOM    ","DOC EMPRUNTE   ","LIMIT ","STATUT");
+		System.out.format("%105s\n","|____________|________________________________|___________|___________");
 		System.out.format("%105s\n","|------------|--------------------------------|---|---|---|-----------");
 		
 		for( Emprunt E1: TabAdh)
@@ -867,7 +867,7 @@ public class Bibliotheque {
 				
 				while(choix_add==1) {
 				
-					n=lire_n("Donner le nombre  d'Adherents pour cette opération : ");
+					n=lire_n("Donner le nombre  d'Adherents pour cette opÃ©ration : ");
 					
 							   for (i = 1; i <= n; i++) {
 								   System.out.println("Emprunt "+i);
@@ -881,7 +881,7 @@ public class Bibliotheque {
 				System.out.println("Veuillez donner un nombre valide ");
 				choix_add=sc1.nextInt();}
 				if(choix_add ==2)
-				{System.out.println("Operation Terminé");}
+				{System.out.println("Operation TerminÃ©");}
 
 				}
 				
@@ -898,7 +898,7 @@ public class Bibliotheque {
 				System.out.println("Veuillez donner un nombre valide ");
 				choix_sup=sc1.nextInt();}
 				if(choix_sup ==2)
-				{System.out.println("Operation Terminé");}
+				{System.out.println("Operation TerminÃ©");}
 
 				}
 			}
@@ -913,7 +913,7 @@ public class Bibliotheque {
 				System.out.println("Veuillez donner un nombre valide ");
 				choix_mod=sc1.nextInt();}
 				if(choix_mod ==2)
-				{System.out.println("Operation Terminé");}
+				{System.out.println("Operation TerminÃ©");}
 
 				}
 				
@@ -933,7 +933,7 @@ public class Bibliotheque {
 			System.out.println("Veuillez donner un nombre valide ");
 			choix_rec=sc1.nextInt();}
 			if(choix_rec ==2)
-			{System.out.println("Operation Terminé");}
+			{System.out.println("Operation TerminÃ©");}
 
 			}
 
@@ -947,7 +947,7 @@ public class Bibliotheque {
 			System.out.println("Veuillez donner un nombre valide ");
 			choix_adh=sc1.nextInt();}
 			if(choix_adh ==2)
-			{System.out.println("Operation Terminé");}
+			{System.out.println("Operation TerminÃ©");}
 		}
 	}
 

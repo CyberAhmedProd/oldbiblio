@@ -270,8 +270,13 @@ public class Emprunt {
 // ----------------------------------------------CyberAhmedProd-----------------------------------------------------------------------
 	// Affichage emprunt ---------------********************************************-*****-****************-*-*-*-*-*-*-*-*-
 	public void afficheEmprunt() {
-		System.out.format("|%12s|%32s|%2d/%2d/%4d|%10s\n",nom,doc_emp,deadline1.getJour(),deadline1.getMois() ,deadline1.getAnnee(),Status);
-		System.out.format("%105s\n","|------------|--------------------------------|---|---|---|-----------|");
+		System.out.format("%32s|%32s|%2d/%2d/%4d|%10s\n",nom,doc_emp,deadline1.getJour(),deadline1.getMois() ,deadline1.getAnnee(),Status);
+		System.out.format("%35s\n","|------------|--------------------------------|---|---|---|-----------|");
+	
+	
+		
+	
+	
 	}
 	
 	public void empruntStatic(LinkedList<Adherent> TabAdh,LinkedList<Document> TabAdh1,LinkedList<Emprunt> TabAdh2,Emprunt A)
@@ -299,7 +304,7 @@ public class Emprunt {
 												
 											}
 											else
-												System.out.println("Desol� ce document ne dispose plus d'exemplaire");
+												System.out.println("Desolé ce document ne dispose plus d'exemplaire");
 											
 											ok1=true;a=1;
 										}
@@ -311,7 +316,7 @@ public class Emprunt {
 							
 					}
 					else
-						System.out.println("Desol� vous pouvez pas faire cette operation.Vous avez atteint la limite de votre nombre d'emprunts");
+						System.out.println("Desolé vous pouvez pas faire cette operation.Vous avez atteint la limite de votre nombre d'emprunts");
 					ok=true;
 				}
 		
