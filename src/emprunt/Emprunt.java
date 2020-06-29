@@ -345,7 +345,7 @@ public class Emprunt {
 				exist=true;
 			}
 			else if(exist==false &&  TabAdh.get(i).getNom().compareToIgnoreCase(adh)!=0 && i==TabAdh.size()-1)
-				System.out.println("Desol� cette personne n'a pas fais d'emprunt");
+				System.out.println("Desolé cette personne n'a pas fais d'emprunt");
 		}
 		
 		

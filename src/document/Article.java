@@ -9,7 +9,7 @@ public class Article extends Document {
 	private Date datePubication;
 	public Article() {
 		super();
-		this.type="Article";
+		this.type="article";
 	}
 	public Article(String titre, Localistion localisation, String type, int nbre_exemp, String nomAuthor, Date datePublication) {
 		super(titre, localisation, type, nbre_exemp);

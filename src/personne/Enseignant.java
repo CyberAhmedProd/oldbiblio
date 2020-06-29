@@ -10,7 +10,7 @@ public class Enseignant extends Adherent {
 	public Enseignant(String nom, String prenom, String addresse, String type) {
 		super(nom, prenom, addresse, type);
 		this.max_doc=7;
-		this.type="Enseignant";
+		this.type="enseignant";
 		this.maxDayEmprunt = 7;
 		
 	}
