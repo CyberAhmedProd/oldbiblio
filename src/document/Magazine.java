@@ -9,7 +9,7 @@ public class Magazine extends Document{
 
 	public Magazine() {
 		super();
-		this.type="magazine";
+		this.type="Magazine";
 	}
 
 	public Magazine(String titre, Localistion localisation, String type, int nbre_exemp,int frequence) {

@@ -1,6 +1,13 @@
 package personne;
 
 import java.text.SimpleDateFormat;
+import java.util.LinkedList;
+import java.util.Scanner;
+
+import document.*;
+
+
+
 
 public class Adherent {
 	protected int idAdherent = 1;
@@ -10,10 +17,12 @@ public class Adherent {
 	protected String type;//type=Etudiant ou Visiteur ou Enseignant
 	protected int max_doc;//Nombre maximal de document selon le type
 	protected int nbEmpruntEffectues;
-	protected int nbEmpruntDepasses;
+	protected int nbEmpruntDepasses=0;
 	protected int nbEmpruntEncours;
 	protected int maxDayEmprunt;
-	protected String status = "none";
+	protected String status = "None";
+	Document D;
+	Scanner sc;
 	public Adherent() {
 		super();
 		// TODO Auto-generated constructor stub
@@ -106,5 +115,57 @@ public class Adherent {
 		System.out.format("%15d|%10s|%12s|%12s|%32s|%3d|%3d|%3d|%6s\n",idAdherent,type,nom,prenom,addresse,nbEmpruntEffectues,nbEmpruntDepasses,nbEmpruntEncours,status);
 		System.out.format("%105s\n","---------|----------|------------|------------|--------------------------------|---|---|---|-------");
 	}
+	
+	/**public void emprunt(LinkedList<Adherent> TabAdh,LinkedList<Document> TabAdh1)
+	{sc=new Scanner(System.in);
+	String emp=null;
+	String adh=null;
+	boolean ok=false,ok1=false;
+	int a=0,b=0;
+	System.out.print("Donner le nom de l'Adherent qui veut emprunter un docuemnt  :");
+	adh=sc.nextLine();
+	for(int i=0; i< TabAdh.size() ;i++)
+		{
+			if(adh==TabAdh.get(i).getNom())
+			{
+						if(TabAdh.get(i).getNbEmpruntEncours()<TabAdh.get(i).getMax_doc())
+						{
+							do {
+								System.out.println("Choissisez le document a emprunter");
+								emp=sc.nextLine();
+								for(int j=0; j< TabAdh1.size() ;j++)
+								{
+										if(emp==TabAdh1.get(j).getTitre())
+										{
+											if(TabAdh1.get(j).getNbre_exemp()!=0)
+											{TabAdh1.get(j).setNbre_exemp(TabAdh1.get(j).getNbre_exemp()-1);
+											TabAdh.get(i).setNbEmpruntEncours(TabAdh.get(i).getNbEmpruntEncours()+1);
+											TabAdh.get(i).setNbEmpruntEffectues(TabAdh.get(i).getNbEmpruntEncours());
+											
+												
+											}
+											else
+												System.out.println("Desolé ce document ne dispose plus d'exemplaire");
+											
+											ok1=true;a=1;
+										}
+										else if (ok1==false && emp != TabAdh1.get(j).getTitre() && j==TabAdh1.size()-1)
+											System.out.println("Le nom du docuemnt choisi ne correspond pas.Reesayer ");
+										
+									
+								}
+							}while(a==0);
+							
+					}
+					else
+						System.out.println("Desolé vous pouvez pas faire cette operation.Vous avez atteint la limite de votre nombre d'emprunts");
+					ok=true;
+				}
+				else if (ok==false && adh != TabAdh.get(i).getNom() && i==TabAdh.size()-1)
+					System.out.println("Le nom de l'Adherent choisi ne correspond pas ");
+			
+		}
 
+
+	}*/
 }

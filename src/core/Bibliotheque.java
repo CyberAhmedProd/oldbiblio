@@ -8,6 +8,7 @@ import document.Article;
 import document.Document;
 import document.Livre;
 import document.Magazine;
+import emprunt.Emprunt;
 import personne.Adherent;
 import personne.Enseignant;
 import personne.Etudiant;
@@ -23,17 +24,22 @@ public class Bibliotheque {
 				Bibliotheque bib = new Bibliotheque();
 				LinkedList<Adherent> Tab = new LinkedList<>();
 				LinkedList<Document> Tab1 = new LinkedList<>();
+				LinkedList<Emprunt> Tab2 = new LinkedList<>();
 				// parti initalisation
 				bib.initTabAherent(Tab);
 				bib.initTabDocument(Tab1);
-				
+				bib.initEmprnt(Tab, Tab1, Tab2);
+				Emprunt Em;
+				 Em= new Emprunt();
+				   Em.retard(Tab, Tab1, Tab2);
 				//bib.Adh(Tab);
-				bib.bibMenu(Tab, Tab1);
+				bib.bibMenu(Tab, Tab1,Tab2);
+			
 	}
 	// *******CyberAhmedProd************************************************************************************************************************
 	// interface men principal********************************************************************************************************************
-	public  void bibMenu(LinkedList<Adherent>Tab,LinkedList<Document>Tab1) {
-		
+	public  void bibMenu(LinkedList<Adherent>Tab,LinkedList<Document>Tab1,LinkedList<Emprunt>Tab2) {
+	
 		
 		
 		System.out.println("*************************************BIENVENUE*************************************\n\n");
@@ -63,10 +69,10 @@ public class Bibliotheque {
 					Doc(Tab1);
 					break;
 				
-				/*case 3:
-					Emp(Tab2,Tab,Tab1,Aujour);
+				case 3:
+					Emp(Tab,Tab1,Tab2);
 					break;
-				*/
+				
 				default:
 					System.out.println("CHOIX INVALIDE");
 					break;
@@ -144,12 +150,12 @@ public class Bibliotheque {
 	// **********************************************************************************************************CyberAhmedProd***********
 	// init la list des Adherent (Etudiant Enseignant and Visit)
 	public void initTabAherent(LinkedList<Adherent> TabAdh) {
-		Enseignant A1 = new Enseignant("ahmed ", " ahmed ", " 10 avenue "," enseignant ");
-		Enseignant A2 = new Enseignant("rami ", " rami ", " 10 avenues "," enseignant ");
-		Visiteur A3 = new Visiteur("zod", " meo ", " 14 avenue "," visiteur ");
-		Visiteur A4 = new Visiteur("laurent", " jad ", " 18 avenue "," visiteur ");
-		Etudiant A5 = new Etudiant("ahmed", "gharbi", " 16 avenue "," etudiant ");
-		Etudiant A6 = new Etudiant("mohamed", " salah ", " 15 avenue "," etudiant ");
+		Enseignant A1 = new Enseignant("amos", " ahmed ", " 10 avenue "," Enseignant ");
+		Enseignant A2 = new Enseignant("rami ", " rami ", " 10 avenues "," Enseignant ");
+		Visiteur A3 = new Visiteur("zod", " meo ", " 14 avenue "," Visiteur ");
+		Visiteur A4 = new Visiteur("laurent", " jad ", " 18 avenue "," Visiteur ");
+		Etudiant A5 = new Etudiant("ahmed", "gharbi", " 16 avenue "," Etudiant ");
+		Etudiant A6 = new Etudiant("mohamed", " salah ", " 15 avenue "," Etudiant ");
 		
 		this.pushAdherent(TabAdh, A1);
 		this.pushAdherent(TabAdh, A2);
@@ -173,12 +179,12 @@ public class Bibliotheque {
 		Date date4 = new Date("01/06/2003");
 		Date date5 = new Date("02/05/2004");
 		Date date6 = new Date("15/03/2005");
-		Article d1 = new Article("la vie en rose",L1,"article",11,"Victor",date1);
-		Article d2 = new Article("La chimie pour les nulles",L2,"article",40,"Van'toff",date2);
-		Livre d3 = new Livre("notre dame de paris",L3,"livre",10,"victor","Hugo",date3);
-		Livre d4 = new Livre("without love",L1,"livre",5,"john","doe",date4);
-		Magazine d5 = new Magazine("code du zero",L2,"magazine",500,12);
-		Magazine d6 = new Magazine("arduino",L2,"magazine",500,12);
+		Article d1 = new Article("la vie en rose",L1,"Article",11,"Victor",date1);
+		Article d2 = new Article("Les nulles de Toulou",L2,"Article",40,"Van'toff",date2);
+		Livre d3 = new Livre("notre dame de paris",L3,"Livre",10,"victor","Hugo",date3);
+		Livre d4 = new Livre("without love",L1,"Livre",5,"john","doe",date4);
+		Magazine d5 = new Magazine("code du zero",L2,"Magazine",500,12);
+		Magazine d6 = new Magazine("arduino",L2,"Magazine",500,12);
 		
 		
 		this.pushDocument(TabAdh, d1);
@@ -191,6 +197,7 @@ public class Bibliotheque {
 		
 	}
 	
+
 	
 	
 	// ******#adherent*********************************************************************************CyberAhmedProd*******************
@@ -233,7 +240,7 @@ public class Bibliotheque {
 	}
 	// **************************************************************CyberAhmedProd***********************************************************
 	
-	// recherche By id Adherent // ******************************************************************************************************
+	// recherche By id Adherent
 	public void rechercheAdherent(LinkedList<Adherent> TabAdh,int id)
 	{
 		
@@ -255,50 +262,6 @@ public class Bibliotheque {
 		
 	}
 	
-	
-	// *********************************************************************************************************************************
-	// recherche by type Adherent *****************************************************************************************************
-	public void rechercheAdherentByType(LinkedList<Adherent> TabAdh,String type)
-	{
-		boolean exist =false ;
-		for(int i=0; i< TabAdh.size();i++)
-		{
-			if((TabAdh.get(i).getType()).equals(type))
-			{
-				
-				TabAdh.get(i).afficheAdherent(); 
-				exist=true;
-			}
-			
-		}
-		if(exist==false)
-		{
-			System.out.println("Personne inexistante");
-		}
-		
-	}
-	// *********************************************************************************************************************************
-		// recherche by stat Adherent *****************************************************************************************************
-		public void rechercheAdherentByStatus(LinkedList<Adherent> TabAdh,String status)
-		{
-			boolean exist =false ;
-			for(int i=0; i< TabAdh.size();i++)
-			{
-				if((TabAdh.get(i).getStatus()).equals(status))
-				{
-					
-					TabAdh.get(i).afficheAdherent(); 
-					exist=true;
-				}
-				
-			}
-			if(exist==false)
-			{
-				System.out.println("Personne inexistante");
-			}
-			
-		}
-		
 	// *************************************************************CyberAhmedProd*************************************************************
 	// delete Adherent ************************
 	public void supprimerAdherent(LinkedList<Adherent> TabAdh,int id)
@@ -317,7 +280,6 @@ public class Bibliotheque {
 			System.out.println("ID introuvable");
 		
 	}
-	
 	
 	
 	// *********************************************************************************************************************************************
@@ -488,63 +450,22 @@ public class Bibliotheque {
 			else if(choose_adh==4)
 			{
 				sc1 = new Scanner(System.in);
-				System.out.println("\nChoix :  \t\t\t\t (1)ID \t\t\t (2)TYPE \t\t\t (3)Stat");
-				int choix_rec= sc1.nextInt();
-				// choix recherche selon le type ou l ID de l'adherent  1 pour id et 2 pour type
-				while(choix_rec==1 || choix_rec==2 || choix_rec==3) {
-					if(choix_rec==1)
-					{
-						System.out.println("Donner l'ID de l'adherent ");
-						
-						this.rechercheAdherent(Tab,sc1.nextInt());
-						System.out.println("\nVoulez vous recommencer la recherche.Appuyez \n 1 pour oui \t 4 pour non ");
+				int choix_rec=1;
+				while(choix_rec==1) {
+				
+					System.out.println("Donner l'ID de l'adherent ");
+					this.rechercheAdherent(Tab,sc1.nextInt());
+					System.out.println("\nVoulez vous recommencer la recherche.Appuyez \n 1 pour oui \t 2 pour non ");
+					choix_rec=sc1.nextInt();
+					while(choix_rec<1 && choix_rec >2 ) {
+						System.out.println("Veuillez donner un nombre valide ");
 						choix_rec=sc1.nextInt();
-						while(choix_rec !=1 && choix_rec !=4 ) {
-							System.out.println("Veuillez donner un nombre valide ");
-							choix_rec=sc1.nextInt();
-						}
-						if(choix_rec ==4)
-							System.out.println("Operation TerminÃ©");
 					}
-					if(choix_rec==2)
-					{
-						System.out.println("Donner Type de l'adherent ");
-						Scanner scType = new Scanner(System.in);
-						// optimiser le code 
-						scType.nextLine();	
-						System.out.println("Confimer : ");
-						this.rechercheAdherentByType(Tab,scType.nextLine().toLowerCase());
-						System.out.println("\nVoulez vous recommencer la recherche.Appuyez \n 2 pour oui \t 4 pour non ");
-						choix_rec=sc1.nextInt();
-						while(choix_rec!=2 && choix_rec !=4 ) {
-							System.out.println("Veuillez donner un nombre valide ");
-							choix_rec=sc1.nextInt();
-						}
-						if(choix_rec ==4)
-							System.out.println("Operation TerminÃ©");
-					}
-					if(choix_rec==3)
-					{
-						System.out.println("Donner Stat de l'adherent ");
-						Scanner scType = new Scanner(System.in);
-						// optimiser le code 
-						scType.nextLine();
-						System.out.println("confirmer");
-						this.rechercheAdherentByStatus(Tab,scType.nextLine());
-						System.out.println("\nVoulez vous recommencer la recherche.Appuyez \n 3 pour oui \t 4 pour non ");
-						
-						while(choix_rec!=3 && choix_rec !=4 ) {
-							System.out.println("Veuillez donner un nombre valide ");
-							choix_rec=sc1.nextInt();
-						}
-						if(choix_rec ==4)
-							System.out.println("Operation TerminÃ©");
-					}
-					
+					if(choix_rec ==2)
+						System.out.println("Operation Terminï¿½");
 
 				}
-				
-				
+
 			}
 			else if(choose_adh==5)
 				this.afficheListeAdherent(Tab);
@@ -558,7 +479,7 @@ public class Bibliotheque {
 			System.out.println("Veuillez donner un nombre valide ");
 			choix_adh=sc1.nextInt();}
 			if(choix_adh ==2)
-				System.out.println("Operation TerminÃ©");
+				System.out.println("Operation Terminï¿½");
 		}
 	}
 	
@@ -569,75 +490,6 @@ public class Bibliotheque {
 	// ******************************CyberAhmedProd *********************************************************************************
 	// -*********#document****************************************Gestion des document ******************************************************
 	// ******************************************************************************************************************************
-	public void rechercheDocument(LinkedList<Document> TabDoc,int id)
-	{
-		
-		boolean exist =false ;
-		for(int i=0; i< TabDoc.size() && exist ==false;i++)
-		{
-			if(TabDoc.get(i).getId_doc()==id)
-			{
-				
-				TabDoc.get(i).afficheDocument(); 
-				exist=true;
-			}
-			
-		}
-		if(exist==false)
-		{
-			System.out.println("Personne inexistante");
-		}
-		
-	}
-	
-	
-	// *********************************************************************************************************************************
-	// recherche by type Adherent *****************************************************************************************************
-	public void rechercheDocumentByType(LinkedList<Document> TabDoc,String type)
-	{
-		boolean exist =false ;
-		for(int i=0; i< TabDoc.size();i++)
-		{
-			if((TabDoc.get(i).getType()).equals(type))
-			{
-				
-				TabDoc.get(i).afficheDocument(); 
-				exist=true;
-			}
-			
-		}
-		if(exist==false)
-		{
-			System.out.println("Personne inexistante");
-		}
-		
-	}
-	// *********************************************************************************************************************************
-		// recherche by stat Adherent *****************************************************************************************************
-		public void rechercheDocumentByTitre(LinkedList<Document> TabDoc,String title)
-		{
-			boolean exist =false ;
-			for(int i=0; i< TabDoc.size();i++)
-			{
-				if((TabDoc.get(i).getTitre()).equals(title))
-				{
-					
-					TabDoc.get(i).afficheDocument(); 
-					exist=true;
-				}
-				
-			}
-			if(exist==false)
-			{
-				System.out.println("Personne inexistante");
-			}
-			
-		}
-	
-	
-	
-	
-	
 	
 	// Affichage Document
 	
@@ -909,69 +761,24 @@ public class Bibliotheque {
 				this.afficheListeDocument(Tab);
 
 			}
-			else if(choose_adh==4)
-			{
-				sc1 = new Scanner(System.in);
-				System.out.println("\nChoix :  \t\t\t\t (1)ID \t\t\t (2)TYPE \t\t\t (3)Titre");
-				int choix_rec= sc1.nextInt();
-				// choix recherche selon le type ou l ID de l'adherent  1 pour id et 2 pour type
-				while(choix_rec==1 || choix_rec==2 || choix_rec==3) {
-					if(choix_rec==1)
-					{
-						System.out.println("Donner l'ID du Document ");
-						
-						this.rechercheDocument(Tab,sc1.nextInt());
-						System.out.println("\nVoulez vous recommencer la recherche.Appuyez \n 1 pour oui \t 4 pour non ");
-						choix_rec=sc1.nextInt();
-						while(choix_rec!=1 && choix_rec !=4 ) {
-							System.out.println("Veuillez donner un nombre valide ");
-							choix_rec=sc1.nextInt();
-						}
-						if(choix_rec ==4)
-							System.out.println("Operation TerminÃ©");
-					}
-					if(choix_rec==2)
-					{
-						System.out.println("Donner Type du Document ");
-						Scanner scType = new Scanner(System.in);
-						// optimiser le code 
-						scType.nextLine();	
-						System.out.println("Confimer : ");
-						this.rechercheDocumentByType(Tab,scType.nextLine().toLowerCase());
-						System.out.println("\nVoulez vous recommencer la recherche.Appuyez \n 2 pour oui \t 4 pour non ");
-						choix_rec=sc1.nextInt();
-						while(choix_rec!=2 && choix_rec !=4 ) {
-							System.out.println("Veuillez donner un nombre valide ");
-							choix_rec=sc1.nextInt();
-						}
-						if(choix_rec ==4)
-							System.out.println("Operation TerminÃ©");
-					}
-					if(choix_rec==3)
-					{
-						System.out.println("Donner Nom de l'auteur ");
-						Scanner scType = new Scanner(System.in);
-						// optimiser le code 
-						scType.nextLine();
-						System.out.println("confirmer");
-						this.rechercheDocumentByTitre(Tab,scType.nextLine());
-						System.out.println("\nVoulez vous recommencer la recherche.Appuyez \n 3 pour oui \t 4 pour non ");
-						
-						while(choix_rec!=3 && choix_rec !=4 ) {
-							System.out.println("Veuillez donner un nombre valide ");
-							choix_rec=sc1.nextInt();
-						}
-						if(choix_rec ==4)
-							System.out.println("Operation TerminÃ©");
-					}
-					
+			/*else if(choose_adh==4)
+			{sc1 = new Scanner(System.in);
+			int choix_rec=1;
+			while(choix_rec==1) {
+				D= new Document();
+				System.out.println("Donner l'ID du Documemt ");
+				D.recherche(Tab,sc1.nextInt());
+			System.out.println("\nVoulez vous recommencer la recherche.Appuyez \n 1 pour oui \t 2 pour non ");
+			choix_rec=sc1.nextInt();
+			while(choix_rec<1 && choix_rec >2 ) {
+			System.out.println("Veuillez donner un nombre valide ");
+			choix_rec=sc1.nextInt();}
+			if(choix_rec ==2)
+			{System.out.println("Operation Terminï¿½");}
 
-				}
-				
-				
 			}
 			
-			
+			}*/
 			else if(choose_adh==5)
 			{
 				Document D= new Document();
@@ -994,8 +801,154 @@ public class Bibliotheque {
 	}
 	
 	
+	//********************************************************************///////////////
+	//init Emprunt
 	
+	public void initEmprnt(LinkedList<Adherent> TabAdh,LinkedList<Document> TabAdh1,LinkedList<Emprunt> TabAdh2)
+	{
 	
+		Emprunt E1 = new Emprunt("amos","la vie en rose",10,06,2020);
+		Emprunt E2 = new Emprunt("rami ","Les nulles de Toulou",27,06,2020);
+		Emprunt E3 = new Emprunt("mohamed","without love",27,06,2020);
+		Emprunt E4 = new Emprunt("laurent","code du zero",27,06,2020);
+		Emprunt E5 = new Emprunt("zod","notre dame de paris",27,06,2020);
+		Emprunt E6 = new Emprunt("amos","arduino",27,06,2020);
+		Emprunt E7= new Emprunt("ahmed","notre dame de paris",27,06,2020);
+		
+
+		   Emprunt Em= new Emprunt();
+		   Em.empruntStatic(TabAdh, TabAdh1, TabAdh2, E1);
+		   Em.empruntStatic(TabAdh, TabAdh1, TabAdh2, E2);
+		   Em.empruntStatic(TabAdh, TabAdh1, TabAdh2, E3);
+		   Em.empruntStatic(TabAdh, TabAdh1, TabAdh2, E4);
+		   Em.empruntStatic(TabAdh, TabAdh1, TabAdh2, E5);
+		   Em.empruntStatic(TabAdh, TabAdh1, TabAdh2, E6);
+		   Em.empruntStatic(TabAdh, TabAdh1, TabAdh2, E7);
+		   
+		  
+	}
+
+	public void afficheListeEmprunt(LinkedList<Emprunt>TabAdh)
+	{
+		System.out.format("%105s\n","+------------+--------------------------------+---+---+---+-----------");
+		System.out.format("|%12s%32s|%3s|%3s|%3s|%10s\n","NOM    ","DOC EMPRUNTE   ","NBE","NBD","NBC","STATUT");
+		System.out.format("%105s\n","|____________|________________________________|___|___|___|___________");
+		System.out.format("%105s\n","|------------|--------------------------------|---|---|---|-----------");
+		
+		for( Emprunt E1: TabAdh)
+            E1.afficheEmprunt();
+	}
+	///*********************************************************************//////
 	
+	public   void Emp(LinkedList<Adherent> TabAdh,LinkedList<Document> TabAdh1,LinkedList<Emprunt> TabAdh2)
+	{	
+	Emprunt Em;
+	sc1=new Scanner(System.in);
 	
+	 	int choix_adh=1,k=1;
+		int choose_adh,i,n;
+		System.out.println("---------------------------GESTION DES EMPRUNTS---------------------------\n");
+		while(choix_adh==1) {
+			   System.out.println("\t1 - Faire un Emprunt");
+	           System.out.println("\t2 - Faire une Remise");
+	           System.out.println("\t3 - Rechercher un Emrpunt");
+	           System.out.println("\t4 - Afficher tous les Emprunts et leur status");
+	           System.out.println("\t5 - Retour");
+			System.out.println("Entrer le numero correspondant : ");
+		
+			
+			choose_adh=sc1.nextInt();
+			while(choose_adh != 1 && choose_adh != 2 && choose_adh != 3 && choose_adh != 4 && choose_adh != 5 ) {
+				System.out.println("Veuillez donner un nombre valide ");
+				choose_adh =sc1.nextInt();}
+			if (choose_adh==1) {sc1 = new Scanner(System.in);
+				int choix_add=1;
+				int	choose_add;
+				
+				while(choix_add==1) {
+				
+					n=lire_n("Donner le nombre  d'Adherents pour cette opération : ");
+					
+							   for (i = 1; i <= n; i++) {
+								   System.out.println("Emprunt "+i);
+								   Em= new Emprunt();
+								   Em.emprunt(TabAdh, TabAdh1, TabAdh2, Em);	
+								   } 
+			
+				System.out.println(" \n Voulez vous recommencer l'ajout.Appuyez \n 1 pour oui \t 2 pour non ");
+				choix_add=sc1.nextInt();
+				while(choix_add != 1 && choix_add !=2 ) {
+				System.out.println("Veuillez donner un nombre valide ");
+				choix_add=sc1.nextInt();}
+				if(choix_add ==2)
+				{System.out.println("Operation Terminé");}
+
+				}
+				
+			}			
+			else if (choose_adh==2) {	sc1 = new Scanner(System.in);
+				int choix_sup=1;//id;
+				while(choix_sup==1) {
+					  Em= new Emprunt();
+					Em.remise(TabAdh, TabAdh1, TabAdh2);
+					
+				System.out.println("\n Voulez vous recommencer la remise.Appuyez \n 1 pour oui \t 2 pour non ");
+				choix_sup=sc1.nextInt();
+				while(choix_sup!=1 &&choix_sup !=2 ) {
+				System.out.println("Veuillez donner un nombre valide ");
+				choix_sup=sc1.nextInt();}
+				if(choix_sup ==2)
+				{System.out.println("Operation Terminé");}
+
+				}
+			}
+			else if (choose_adh==3) {sc1 = new Scanner(System.in);
+				int choix_mod=1;
+				while(choix_mod==1) {	
+					Em= new Emprunt();
+							Em.rechercheEmp(TabAdh2);
+				System.out.println("\nVoulez vous recommencer la recherche.Appuyez \n 1 pour oui \t 2 pour non ");
+				choix_mod=sc1.nextInt();
+				while(choix_mod!=1 && choix_mod !=2 ) {
+				System.out.println("Veuillez donner un nombre valide ");
+				choix_mod=sc1.nextInt();}
+				if(choix_mod ==2)
+				{System.out.println("Operation Terminé");}
+
+				}
+				
+
+			}
+			else if(choose_adh==4)
+			{sc1 = new Scanner(System.in);
+			int choix_rec=1;
+			while(choix_rec==1) {
+				   Em= new Emprunt();
+				   Em.retard(TabAdh, TabAdh1, TabAdh2);
+				   afficheListeEmprunt(TabAdh2);
+				   
+			System.out.println("\nVoulez vous recommencer l'affichage.Appuyez \n 1 pour oui \t 2 pour non ");
+			choix_rec=sc1.nextInt();
+			while(choix_rec!=1 && choix_rec !=2 ) {
+			System.out.println("Veuillez donner un nombre valide ");
+			choix_rec=sc1.nextInt();}
+			if(choix_rec ==2)
+			{System.out.println("Operation Terminé");}
+
+			}
+
+			}
+			else if(choose_adh==5)
+				System.out.println("END");
+			sc1 = new Scanner(System.in);
+			System.out.println("\nVoulez vous recommencer la gestion des Emprunts.Appuyez \n 1 pour oui \t 2 pour non ");
+			choix_adh=sc1.nextInt();
+			while(choix_adh!=1 &&choix_adh !=2 ) {
+			System.out.println("Veuillez donner un nombre valide ");
+			choix_adh=sc1.nextInt();}
+			if(choix_adh ==2)
+			{System.out.println("Operation Terminé");}
+		}
+	}
+
 }

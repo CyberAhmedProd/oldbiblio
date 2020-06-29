@@ -10,7 +10,7 @@ public class Livre extends Document{
 	private Date dateEdition;
 	public Livre() {
 		super();
-		this.type = "livre";
+		this.type = "Livre";
 	}
 	public Livre(String titre, Localistion localisation, String type, int nbre_exemp, String nomAuthor, String nomEdition, Date dateEdition) {
 		super(titre, localisation, type, nbre_exemp);
